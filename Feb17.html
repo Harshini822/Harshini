@@ -1,0 +1,244 @@
+<!-- Q1: How do you select an element with the ID game-board and change its background color to blue -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+  </head>
+  <body>
+      <h1>Heading Tag</h1>
+      <p>Sample program</p>
+      <div id="game-board">
+        <p>CSS Manipulation</p>
+      </div>
+
+      <script>
+        
+            document.getElementById("game-board").style.backgroundColor = "blue";
+       
+      </script>
+  </body>
+</html> 
+
+
+<!-- Q3: How do you add a click event to a button with the ID start-game that logs "Game Started!" to the console? -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href = "styles.css">
+  </head>
+  <body>
+      <h1>Heading Tag</h1>
+      <p>Sample program</p>
+      
+      <div id = "start-game">
+        <button>Click</button>
+      </div>
+      
+
+      <script>
+        document.getElementById("start-game").addEventListener("click", function() {
+        console.log("Game started!")
+    });
+      </script>
+  </body>
+</html>
+
+<!-- Q5: How do you create a simple counter that increments when a button is clicked? -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href = "styles.css">
+  </head>
+  <body>
+      <h1>Heading Tag</h1>
+      <p>Sample program</p>
+      <h1>Counter:</h1>
+      <p id="counter">0</p>
+      
+      <div id = "start-game">
+        <button>Click</button>
+      </div>
+      
+
+      <script>
+        let count = 0;
+        document.getElementById("start-game").addEventListener("click", function() {
+          count++;
+          document.getElementById("counter").textContent = count;
+        
+    });
+      </script>
+  </body>
+</html>
+
+<!-- Q6: You are making a game where the player earns points by clicking a button. When the score reaches 10, you want to display a message saying "You Win!". How would you write this in JavaScript? -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href = "styles.css">
+  </head>
+  <body>
+      <h1>Heading Tag</h1>
+      <p>Sample program</p>
+      <h1>Game:</h1>
+      <p id="score">0</p>
+      <p id="counter"></p>
+      
+      <div id = "start-game">
+        <button>Click</button>
+      </div>
+      
+
+      <script>
+        let count = 0;
+        document.getElementById("start-game").addEventListener("click", function() {
+          count++;
+          document.getElementById("score").textContent = count;
+          if(count == 10)
+          {
+            
+            document.getElementById("counter").textContent = "You win!";
+          }
+        
+    });
+      </script>
+  </body>
+</html>
+
+<!-- Q7: How do you add a red border to a div with the class box when it's clicked? -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href = "styles.css">
+  </head>
+  <body>
+      <h1>Heading Tag</h1>
+      <p>Sample program</p>
+      
+      
+      <div class = "box">
+        <p>
+          Click
+        </p>
+        
+      </div>
+      
+
+      <script>
+       document.querySelector(".box").addEventListener("click", function() {
+            this.style.border = "2px solid red";
+        });
+      </script>
+  </body>
+</html>
+
+<!-- Q4: How do you prevent the default action of a button inside a form when clicked? -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href = "styles.css">
+  </head>
+  <body>
+      <form id="myForm">
+        <input type="text" placeholder="Type something">
+        <button id="btn">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("btn").addEventListener("click", function(event) {
+            event.preventDefault(); 
+            alert("Button clicked, but form not submitted!");
+        });
+    </script>
+  </body>
+</html>
+
+
+<!-- Q9: You have a button with the ID "change-text-btn" and a paragraph with the ID "message". When the button is clicked, the paragraph should change its text to "Hello, Player!" -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href = "styles.css">
+  </head>
+  <body>
+    <p id="message">Hello</p>
+    <button id="change-text-btn">Click</button>
+    <script>
+        document.getElementById("change-text-btn").addEventListener("click", function() {
+            document.querySelector("#message").textContent = "Hello, Player!";
+        });
+    </script>
+  </body>
+</html>
+
+
+
+<!-- Q8: How do you toggle a highlight class on an element with the ID player when clicked? -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+        .highlight {
+            background-color: green;
+            color: white;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="player">Toggle</div>
+
+    <script>
+
+        document.getElementById("player").addEventListener("click", function() {
+            this.classList.toggle("highlight");
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- Q2: How do you select all elements with the class enemy and hide them? -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="enemy">Toggle</div>
+    <button>click</button>
+    <div class = "enemy">
+      <h1>Heading Tag</h1>
+    </div>
+
+    <script>
+
+        document.querySelectorAll(".enemy").forEach(function(element) {
+            element.style.display = "none";
+        });
+      
+    </script>
+</body>
+</html>
+
