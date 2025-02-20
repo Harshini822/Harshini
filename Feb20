@@ -1,0 +1,59 @@
+//1
+let a = 5;
+let b = 10;
+[a,b] = [b,a];
+console.log(a,b)
+
+//2
+const book = { title: "JavaScript Guide", author: "John Doe", year: 2023 };
+
+
+const {title, author} = book;
+
+console.log(title, author); 
+//3
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// Merge the arrays here
+const mergedArray = [...arr1, ...arr2]
+
+console.log(mergedArray); // Expected output: [1, 2, 3, 4, 5, 6]
+
+//4
+function sumAll(...numbers) {
+  let sum = 0;
+  for(let i=0;i<numbers.length;i++)
+  {
+    sum+=numbers[i];
+  }
+  console.log(sum);
+}
+
+console.log(sumAll(1, 2, 3, 4)); 
+console.log(sumAll(10, 20)); 
+
+//5
+const inputName = ""; // Simulate empty input
+
+const username = inputName || "Guest";
+
+console.log(username); // Expected output: "Guest"
+
+//6
+const score = 0;
+
+const userScore = score ?? 99;
+
+console.log(userScore); // Expected output: 0 (not "No Score")
+
+//7
+
+const settings = { theme: "", fontSize: 0 };
+
+settings.theme ||= "light";
+settings.fontSize ||=0;
+
+console.log(settings); // Expected output: { theme: "light", fontSize: 0 }
+
+
