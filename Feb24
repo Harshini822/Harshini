@@ -1,0 +1,349 @@
+// 1. Implementing High Scores
+// Q1: Create an array of player scores and find the highest score.
+
+const scores = [34,32,12,43,26,77,27];
+console.log(Math.max(...scores));
+//or
+let maximum = 0;
+for(let i=0;i<scores.length;i++){
+  if(scores[i]>maximum){
+    maximum = scores[i];
+  }
+}
+console.log('Highest score:',maximum);
+
+// 2. Refactoring Code: The DRY Principle
+// Q2: Refactor this code to remove redundancy:
+
+function greetMorning(name) {
+    return `Good morning, ${name}`;
+}
+function greetEvening(name) {
+    return `Good evening, ${name}`;
+}
+
+function greet(time, name)
+{
+  return `Good ${time}, ${name}`;
+}
+
+console.log(greet('Morning', 'Alice'));
+console.log(greet('Night', 'Jonas'));
+
+// 3. Modal Window Handling
+// Q3: Write JavaScript to open and close a modal window.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Window</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <button class="open-modal">Open Modal</button>
+
+    <div class="modal hidden">
+        <button class="close-modal">X</button>
+        <h1>Modal Title</h1>
+        <p>This is a simple modal window example.</p>
+    </div>
+
+    <div class="overlay hidden"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+.open-modal {
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: red;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 3rem 5rem grey;
+  z-index: 10;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+  z-index: 5;
+}
+
+'use strict';
+
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-modal');
+const btnOpenModal = document.querySelector('.open-modal');
+
+const openModal = function () {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+const closeModal = function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+btnOpenModal.addEventListener('click', openModal);
+
+btnCloseModal.addEventListener('click', closeModal);
+
+overlay.addEventListener('click', closeModal);
+
+// 4. Handling 'Esc' Key Press
+// Q4: Close a modal when the Escape key is pressed.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Window</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <button class="open-modal">Open Modal</button>
+
+    <div class="modal hidden">
+        <button class="close-modal">X</button>
+        <h1>Modal Title</h1>
+        <p>This is a simple modal window example.</p>
+    </div>
+
+    <div class="overlay hidden"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+.open-modal {
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: red;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 3rem 5rem grey;
+  z-index: 10;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+  z-index: 5;
+}
+
+'use strict';
+
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-modal');
+const btnOpenModal = document.querySelector('.open-modal');
+
+const openModal = function () {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+const closeModal = function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+btnOpenModal.addEventListener('click', openModal);
+
+btnCloseModal.addEventListener('click', closeModal);
+
+overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
+
+// 5. The 'this' Keyword in Practice
+// Q5: Predict the output of this code:
+
+const obj = {
+    name: "Alice",
+    greet() {
+        console.log(this.name);
+    }
+};
+obj.greet();
+
+//Output - Alice
+
+// 6. Regular Functions vs. Arrow Functions
+// Q6: Why does this code return undefined?
+
+const obj1 = {
+    name: "Alice",
+    greet: () => {
+        console.log(this.name);
+    }
+};
+obj1.greet();
+
+//because arrow function does not get their own this keyword
+
+// 7. Memory Management: Primitives vs. Objects
+// Q7: What happens in the code below?
+
+let a = 5;
+let b = a;
+b = 10;
+console.log(a);
+console.log(b);
+//ouput 5 abd 10
+//as it primitive type variables have their own memory so a value is 5 and b alone changed to 10.
+
+// 8. Shallow vs. Deep Copy
+// Q8: Why does changing copy.name affect person?
+
+const person = { name: "Alice" };
+const copy = person;
+copy.name = "Bob";
+console.log(person.name);
+
+//as it object it is stored in heap pointing to same memory address so the output for the person also changed
+
+// 9. Destructuring Arrays & Objects
+// Q9: Extract name and age from the object.
+
+const user = { name: "John", age: 30 };
+
+const {name, age} = user;
+console.log(name,age);
+
+// 10. The Spread Operator (...)
+// Q10: Merge two arrays using the spread operator.
+
+const colors = ['pink', 'blue', 'red', 'green'];
+const fruits = ['apple', 'orange', 'grapes'];
+
+const mergedArray = [...colors,...fruits];
+console.log(mergedArray);
+
+// 11. The Nullish Coalescing Operator (??)
+// Q11: Fix a code snippet to avoid falsy values like 0 or ''.
+
+const Age = 30;
+console.log(Age ?? 20);
+const Age1 = 0;
+console.log(Age1 ?? 20);
+const nullAge = null;
+console.log(nullAge ?? 20);
+
+// 12. Maps and Sets
+// Q12: Create a Map and retrieve a value.
+
+// Q13: Remove duplicates using a Set.
+//12
+const student = new Map();
+student.set('Alice', 89)
+.set('Bob', 99)
+.set('Alex', 67);
+
+console.log(student.get('Bob'));
+
+//13
+
+const food = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+  'Burger',
+]);
+
+console.log(food);
+
+// 13. Working with Strings
+// Q14: Convert a string to uppercase.
+
+// Q15: Find if a string includes another string.
+//14
+console.log('Harshini'.toUpperCase());
+//15
+const string1 = 'Sample text';
+console.log(string1.includes('Sample'));
+console.log(string1.includes('mango'));
+
