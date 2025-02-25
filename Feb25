@@ -1,0 +1,147 @@
+// 8. Write a function personInfo that prints a person's name and age. Bind it to different objects and invoke it later.
+
+const student = {
+  course: 'IT',
+  personInfo(name,age){
+    console.log(`Name : ${name} Age : ${age} , course: ${this.course}`);
+  }
+};
+const personInfo = student.personInfo;
+const professor = {
+  course: 'CSE',
+};
+
+const studPersonInfo = personInfo.bind(student);
+const profPersonInfo = personInfo.bind(professor);
+
+studPersonInfo('Steven Williams',20);
+profPersonInfo('Mary Cooper',27);
+
+
+// 9. Write an IIFE that prints "Hello, World!" immediately.
+(function(){
+  console.log("Hello, World!")
+})();
+
+
+// 10. Create an IIFE that takes two numbers as arguments and logs their sum immediately.
+(function(num1,num2){
+  console.log(num1+num2);
+})(7,9);
+
+
+
+// 7. Create an object with a method and use call and apply to invoke it with a different context.
+
+const student = {
+    course: 'IT',
+    personInfo(name,age){
+      console.log(`Name : ${name} Age : ${age} , course: ${this.course}`);
+    }
+  };
+  const personInfo = student.personInfo;
+  const professor = {
+    course: 'CSE',
+  };
+  
+  personInfo.call(professor,'Mary Cooper',27);
+  console.log(professor);
+  personInfo.call(student,'Jeremy Gilbert',22);
+  console.log(student);
+  
+  const details = ['John Doe', 25];
+  personInfo.apply(professor,details);
+  personInfo.call(student,...details);
+
+// 5. Implement a multiplier function that takes a number and returns a function that multiplies its input by that number.
+
+function multiplier(number){
+    return function(multiplyingNum){
+      return number*multiplyingNum;
+    }
+  }
+  
+  console.log(multiplier(7)(8));
+  const multiple = multiplier(99);
+  console.log(multiple(7));
+  console.log(multiple(10));
+
+// 4. Write a function greet that returns another function which takes a name as an argument and returns a greeting message.
+
+const greet = function(greeting){
+    return function(name){
+      console.log(`${greeting} ${name}`);
+    };
+  };
+  
+greet('Good morning')('Steve');
+
+// 6. Write a function 'introduce' that prints a message using this keyword and call it with different objects using call.
+
+function introduce() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+  
+  const person1 = {
+    name:'ALice',
+    age:20,
+  };
+  const person2 = {
+    name:'Bob',
+    age:27,
+  };
+  const person3 = {
+    name:'Elena',
+    age:23,
+  };
+  
+  introduce.call(person1); 
+  introduce.call(person2);
+  introduce.call(person3); 
+
+//3. Implement a calculate function that takes two numbers and a callback function to perform an operation (addition, subtraction, multiplication, or division).
+
+function calculate(number1, number2, operation) {
+    return operation(number1, number2);
+  }
+  const add = (a, b) => a + b;
+  const subtract = (a, b) => a - b;
+  const multiply = (a, b) => a * b;
+  const divide = (a, b) => a / b;
+  
+  console.log(calculate(10, 5, add));      
+  console.log(calculate(10, 5, subtract));  
+  console.log(calculate(10, 5, multiply));  
+  console.log(calculate(10, 5, divide));  
+
+
+// 2. Create a function filterEvenNumbers that takes an array and a callback function to filter out even numbers.
+
+function filterEvenNumbers(arr, func) {
+    for (let i = 0; i < arr.length; i++) {
+      if (func(arr[i])) {
+        console.log(arr[i]); 
+      }
+    }
+  }
+  
+  const isEven = (num) => num % 2 === 0;
+  
+  const numbers = [63,5,8,21,45,22,89];
+  
+  filterEvenNumbers(numbers, isEven);
+
+//   1. Write a function processArray that accepts an array and a callback function. The callback should be applied to each element of the array.
+
+function processArray(arr, func) {
+    for (let i = 0; i < arr.length; i++) {
+      console.log(func(arr[i])); 
+    }
+  }
+  
+  const square = (num) => num * num; 
+  
+  const numbers = [63, 5, 8, 21, 45, 22, 89];
+  
+  processArray(numbers, square);
+  
